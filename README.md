@@ -5,7 +5,7 @@ Pipeline documentado e rastreável para detectar trilhas de satélites em imagen
 **Autor:** João Paulo Faustino Santos  
 **Orientador:** Prof. José Bermudez  
 **Curso:** Visão Computacional Master — PUC-Rio  
-**Repositório:** [github.com/jpaulofsantos/tcc-satellite-streaks](https://github.com/jpaulofsantos/tcc-satellite-streaks)
+**Repositório:** [github.com/jpaulofsantos/satellite-streaks](https://github.com/jpaulofsantos/satellite-streaks)
 
 ![Frame real do ASTA com uma trilha de satélite](./assets/readme/asta_trilha_contexto_abertura.png)
 
