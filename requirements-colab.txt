@@ -1,0 +1,12 @@
+# Ambiente registrado nas execuções finais (Google Colab).
+# O runtime Colab fornece o PyTorch/CUDA compatível com a GPU; não instale uma
+# versão de torch incompatível com o runtime ativo sem revisar o protocolo.
+ultralytics==8.4.127
+numpy
+pandas
+opencv-python
+scikit-image
+matplotlib
+Pillow
+tqdm
+requests

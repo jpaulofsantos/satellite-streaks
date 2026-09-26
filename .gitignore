@@ -1,0 +1,16 @@
+# Dados, modelos e artefatos pesados não são distribuídos pelo repositório.
+data/
+*.pt
+*.tar
+*.zip
+*.cache
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
+
+# Saídas locais de execução
+runs/
+wandb/
+*.log

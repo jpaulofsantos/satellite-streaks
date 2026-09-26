@@ -1,0 +1,1157 @@
+{
+  "meta": {
+    "projectName": "Detecção de Trilhas de Satélite em Imagens Astronômicas",
+    "updatedAt": "2026-09-03",
+    "statusSummary": "Experimento concluído; redação, revisão do orientador, repositório e entrega pendentes",
+    "sourcePlanner": "tcc-backup-reestruturado-2026-08-28.json",
+    "sourcePlannerSha256": "e9d2e977cd082a463b85c1e69657f3d9d687893c1b7e2e4368e7f2b954a854f5",
+    "finalAnalysisSha256": "ea83fe1644dcc017a346aab61db8b71e650379e46ac841b9963a2ad98bd0596d"
+  },
+  "phases": [
+    {
+      "n": 1,
+      "title": "Fundamentação e Setup",
+      "deliverable": "Repositório estruturado, revisão bibliográfica pronta e escopo aprovado pelo orientador.",
+      "start": "2026-07-11",
+      "end": "2026-08-07"
+    },
+    {
+      "n": 2,
+      "title": "Construção do Dataset",
+      "deliverable": "Dataset sintético completo, anotado e versionado, pronto para treino.",
+      "start": "2026-08-08",
+      "end": "2026-09-04"
+    },
+    {
+      "n": 3,
+      "title": "Modelagem",
+      "deliverable": "Modelo treinado e comparado com um baseline clássico.",
+      "start": "2026-09-05",
+      "end": "2026-10-02"
+    },
+    {
+      "n": 4,
+      "title": "Refinamento e Validação",
+      "deliverable": "Modelo final validado, com os limites do sistema documentados.",
+      "start": "2026-10-03",
+      "end": "2026-10-30"
+    },
+    {
+      "n": 5,
+      "title": "Consolidação Técnica + Escrita",
+      "deliverable": "Repositório pronto para entrega e rascunho avançado do TCC.",
+      "start": "2026-10-31",
+      "end": "2026-11-27"
+    },
+    {
+      "n": 6,
+      "title": "Escrita Final e Entrega",
+      "deliverable": "TCC finalizado e repositório público.",
+      "start": "2026-11-28",
+      "end": "2026-12-25"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "tk_6znp5baa1ut",
+      "phase": 1,
+      "order": 0,
+      "title": "Estruturar o repositório e o ambiente de desenvolvimento",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 4,
+      "start": "2026-07-11",
+      "end": "2026-07-17",
+      "context": "Antes de qualquer código de detecção, o projeto precisa de uma base organizada — isso evita retrabalho de reorganização no meio do desenvolvimento e já mostra pra banca que houve engenharia de software por trás do experimento.",
+      "whatToDo": "Criar o repositório no GitHub e montar a estrutura de pastas que vai acomodar dados, notebooks, código-fonte, documentação e resultados.",
+      "howTo": "1) Criar repositório privado no GitHub.\n2) Criar pastas: data/ (raw, synthetic, processed), notebooks/, src/ (data_generation, models, utils), docs/, outputs/.\n3) Configurar venv local com requirements.txt inicial.\n4) Espelhar o setup num notebook Colab de teste.\n5) Fazer o primeiro commit com .gitignore (ignorando dados pesados).",
+      "done": [
+        {
+          "id": "dc_9aylc8wa1ut",
+          "text": "Repositório criado no GitHub",
+          "done": true
+        },
+        {
+          "id": "dc_38y7h6ra1ut",
+          "text": "Estrutura de pastas definida",
+          "done": true
+        },
+        {
+          "id": "dc_avswamma1ut",
+          "text": "Ambiente local configurado",
+          "done": true
+        },
+        {
+          "id": "dc_bhyiimla1ut",
+          "text": "Primeiro commit feito",
+          "done": true
+        }
+      ],
+      "notes": "",
+      "links": [
+        {
+          "id": "lnk_hl719dmj8l4",
+          "label": "Github Projeto",
+          "url": "https://github.com/jpaulofsantos/tcc-satellite-streaks"
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "tk_y4bb3f2a1ut",
+      "phase": 1,
+      "order": 1,
+      "title": "Revisar a literatura de detecção de trilhas",
+      "status": "doing",
+      "priority": "media",
+      "estimate": 8,
+      "start": "2026-07-18",
+      "end": "2026-07-24",
+      "context": "A banca vai perguntar 'por que essa abordagem e não outra' — ter os principais trabalhos resumidos dá munição pra justificar as escolhas técnicas do TCC.",
+      "whatToDo": "Ler e resumir os principais artigos de detecção de streaks/trilhas de satélite, extraindo métodos, datasets usados e métricas de referência.",
+      "howTo": "Ler StreakMind (2026), o artigo de U-Net + Hough Transform (A&A 2024) e o HT-LCNN. Para cada um, anotar: dataset usado, arquitetura e métricas alcançadas. Consolidar tudo na seção 'Trabalhos Relacionados' do TCC.",
+      "done": [
+        {
+          "id": "dc_hlndm6oa1ut",
+          "text": "Resumo técnico do StreakMind incorporado ao compilado",
+          "done": true
+        },
+        {
+          "id": "dc_dpdocw5a1ut",
+          "text": "Resumo do U-Net + Hough/ASTA incorporado",
+          "done": true
+        },
+        {
+          "id": "dc_leikq8na1ut",
+          "text": "Rascunho de Trabalhos Relacionados consolidado",
+          "done": true
+        },
+        {
+          "id": "dc_qaendu47ptg",
+          "text": "Resumo - Duda e Hart (1972) - Use of the Hough Transformation",
+          "done": true
+        },
+        {
+          "id": "dc_wr5a0fxdmyu",
+          "text": "Resumo Deep Hough-Transform Line Priors",
+          "done": true
+        },
+        {
+          "id": "dc_t5fzv92ix2z",
+          "text": "U-Net + Line Segment Detector verificado em fonte primária",
+          "done": true
+        },
+        {
+          "id": "dc_v3_claim_source",
+          "text": "Tabela afirmação → correção → fonte incorporada ao compilado",
+          "done": true
+        }
+      ],
+      "notes": "REVISÃO TÉCNICA AVANÇADA. O compilado v4 registra as diferenças entre Hough clássico, U-Net→Hough, redes com prior de Hough e YOLO-OBB. Foram verificadas fontes primárias para Stoppa et al. (2024), Lin et al. (2020), Carrillo Navarro et al. (2026), Rachith et al. (2026), Chen et al. (2025) e Zhao et al. (2026). Correções centrais: ASTA não avalia Hough standalone sobre o frame bruto; StreakMind reporta conjunto híbrido de 2.335 imagens; métricas externas de outros estudos não são metas diretamente transferíveis.\n\nPENDENTE: revisão bibliográfica formal no template da monografia, normalização das referências e conferência final citação↔bibliografia.",
+      "links": [
+        {
+          "id": "lnk_ie77ozsb8d7",
+          "label": "StreakMind",
+          "url": "https://arxiv.org/abs/2605.03429"
+        },
+        {
+          "id": "lnk_kwmgdn6d65i",
+          "label": "U-Net and Hough Transform",
+          "url": "https://arxiv.org/abs/2407.19461"
+        },
+        {
+          "id": "lnk_ab27adjdrsb",
+          "label": "Deep-Hough-Transform-Line-Priors",
+          "url": "https://github.com/yanconglin/Deep-Hough-Transform-Line-Priors"
+        },
+        {
+          "id": "lnk_r36rhwner1o",
+          "label": "Streak detection in the VST/OmegaCAM archive using deep learning",
+          "url": "https://arxiv.org/abs/2606.30286"
+        },
+        {
+          "id": "lnk_qld72dhf6qb",
+          "label": "Deep Hough-Transform Line Priors",
+          "url": "https://arxiv.org/abs/2007.09493"
+        },
+        {
+          "id": "lnk_rdpdibm5vbf",
+          "label": "Detection and trajectory extraction of streak-like objects",
+          "url": "https://academic.oup.com/mnras/article/549/2/stag958/8690241"
+        },
+        {
+          "id": "lnk_g9voov16mem",
+          "label": "Daytime Photometry of Starlink Satellites",
+          "url": "https://arxiv.org/abs/2506.11382"
+        },
+        {
+          "id": "lnk_y5irn746yvz",
+          "label": "Artificial Satellite Trails Detection Using U-Net Deep Neural Network",
+          "url": "https://arxiv.org/abs/2509.16771"
+        },
+        {
+          "id": "lnk_38olbx779xh",
+          "label": "Use of the Hough transformation to detect lines and curves in pictures",
+          "url": "https://dl.acm.org/doi/10.1145/361237.361242"
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "tk_vimahgba1ut",
+      "phase": 1,
+      "order": 2,
+      "title": "Definir o escopo técnico do projeto",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 5,
+      "start": "2026-07-25",
+      "end": "2026-07-31",
+      "context": "Escopo mal definido é a causa mais comum de atraso em TCC — decidir agora o que entra e o que fica de fora evita retrabalho nos meses seguintes.",
+      "whatToDo": "Fechar as decisões de escopo: tipo de objeto a detectar, arquitetura principal e critério objetivo de sucesso.",
+      "howTo": "Decidir entre detectar só trilhas retas de satélite ou incluir detritos/meteoros. Definir a meta de métrica (ex: mAP acima de 0.7). Escolher entre YOLOv8 (detecção com bbox) e U-Net (segmentação) — recomendação inicial: YOLOv8, por ter ciclo de iteração mais rápido. Registrar as decisões no rascunho de introdução do TCC.",
+      "done": [
+        {
+          "id": "dc_b8bmhlta1ut",
+          "text": "Tipo de objeto a detectar definido",
+          "done": true
+        },
+        {
+          "id": "dc_adhm8p6a1ut",
+          "text": "Meta de métrica definida",
+          "done": true
+        },
+        {
+          "id": "dc_dl3pocaa1ut",
+          "text": "Arquitetura principal escolhida",
+          "done": true
+        },
+        {
+          "id": "dc_kxacu8ka1uu",
+          "text": "Introdução (rascunho) iniciada",
+          "done": true
+        }
+      ],
+      "notes": "Escopo técnico vigente: detectar trilhas de satélite como uma única classe, comparar o baseline Canny + HoughLinesP com um detector YOLO-OBB e avaliar separadamente brilho constante, variável e tracejado. O ASTA permanece externo e intocado durante desenvolvimento e seleção.\n\nA família final ainda não foi assumida: YOLOv8n-OBB e YOLO11n-OBB estão sendo comparados somente em treino/validação sob contrato congelado. As metas numéricas antigas são objetivos aspiracionais, não critérios para alterar o protocolo depois de observar o teste.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_cqz2pe1a1uu",
+      "phase": 1,
+      "order": 3,
+      "title": "Validar o plano com o orientador",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 2,
+      "start": "2026-08-01",
+      "end": "2026-08-07",
+      "context": "Alinhar expectativas com quem vai avaliar o trabalho antes de investir meses de execução evita retrabalho de escopo mais à frente.",
+      "whatToDo": "Apresentar o escopo definido e o cronograma para o orientador, coletar feedback e ajustar o que for necessário.",
+      "howTo": "Marcar reunião. Levar escopo e cronograma resumidos em uma página. Anotar os ajustes pedidos. Atualizar o plano conforme o combinado.",
+      "done": [
+        {
+          "id": "dc_2zg1d3pa1uu",
+          "text": "Reunião realizada",
+          "done": true
+        },
+        {
+          "id": "dc_we44swga1uu",
+          "text": "Feedback registrado",
+          "done": true
+        },
+        {
+          "id": "dc_u8l5w0na1uu",
+          "text": "Cronograma ajustado se necessário",
+          "done": true
+        }
+      ],
+      "notes": "Plano apresentado e aprovado pelo orientador (José Bermudez). Orientador sinalizou\npotencial para apresentação do trabalho em congresso, a depender dos resultados.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_btshdzqa1uu",
+      "phase": 2,
+      "order": 0,
+      "title": "Coletar imagens de fundo reais",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 6,
+      "start": "2026-08-08",
+      "end": "2026-08-14",
+      "context": "O modelo só generaliza bem se o fundo for realista — céu estrelado de verdade, com o ruído e a densidade de estrelas de um telescópio real.",
+      "whatToDo": "Reunir um banco de 300 a 800 imagens astronômicas reais para servir de fundo na geração sintética das trilhas.",
+      "howTo": "Baixar imagens do Kaggle (Hubble/JWST). Puxar imagens adicionais do SDSS via astroquery. Testar a API do NASA APOD como fonte complementar. Padronizar resolução e normalização de todas as imagens coletadas.",
+      "done": [
+        {
+          "id": "dc_tt7ujl2a1uu",
+          "text": "100-200 imagens do Kaggle baixadas",
+          "done": true
+        },
+        {
+          "id": "dc_haj25c9a1uu",
+          "text": "Imagens do SDSS coletadas via astroquery",
+          "done": true
+        },
+        {
+          "id": "dc_o046ixia1uu",
+          "text": "API do NASA APOD testada",
+          "done": true
+        },
+        {
+          "id": "dc_1ch0z8ua1uu",
+          "text": "Formato padronizado",
+          "done": true
+        }
+      ],
+      "notes": "Pipeline v3 validado nos Notebooks 01–02. O manifest padronizado contém 424 registros: APOD 86, Hubble 80, JWST 8 e SDSS 250. O Notebook 01 registrou 27 recusas controladas (3 DecompressionBombError e 24 MemoryError), sem erros de integridade; backup 424/424, zero ausentes, órfãos ou hashes divergentes.\n\nA auditoria de domínio classificou A=250, B=75 e C=99. A curadoria publicada contém 325 fundos (A+B), com 11 candidatos a hard negative real; categoria C permanece preservada fora do dataset experimental. Backup da curadoria: 325/325 e zero divergência de hash. Dados raw foram preservados; destinos curados são reconstruídos pela allowlist.",
+      "links": [
+        {
+          "id": "lnk_86xxxq1o8c3",
+          "label": "Link Colab",
+          "url": "https://colab.research.google.com/drive/1OUlEbGdIcXRbTQaTB8_Bn3a2-4Clsd_G#scrollTo=lBIBKaCUR1JZ"
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "tk_v3_auditoria_abc",
+      "phase": 2,
+      "order": 1,
+      "title": "Auditar e curar fundos por domínio (A/B/C)",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 6,
+      "start": "2026-08-22",
+      "end": "2026-08-23",
+      "context": "Imagens astronômicas legítimas podem pertencer a domínios visuais muito diferentes. Separar fundos A/B/C antes do split reduz viés de domínio e impede que imagens icônicas ou conteúdo inadequado contaminem validação e teste.",
+      "whatToDo": "Auditar os fundos padronizados, classificar seu papel experimental, construir a allowlist curada e verificar o backup por contagem e SHA-256.",
+      "howTo": "Aplicar a política A/B/C registrada; manter A em todos os splits, restringir B ao treino e excluir C do experimento sem apagar o raw. Reconstruir a curadoria pela allowlist e executar validação automática mais revisão visual dirigida.",
+      "done": [
+        {
+          "id": "dc_v3_abc_policy",
+          "text": "Política A/B/C aplicada e documentada",
+          "done": true
+        },
+        {
+          "id": "dc_v3_abc_allowlist",
+          "text": "Allowlist curada com 325 fundos publicada",
+          "done": true
+        },
+        {
+          "id": "dc_v3_abc_hashes",
+          "text": "Backup 325/325 verificado por SHA-256",
+          "done": true
+        },
+        {
+          "id": "dc_v3_abc_raw",
+          "text": "Dados raw preservados e categoria C excluída do experimento",
+          "done": true
+        }
+      ],
+      "notes": "Notebook 02 aprovado end-to-end. Auditoria sobre 424 registros: A=250, B=75 e C=99. Curadoria experimental A+B: 325 fundos; 11 fundos sinalizados como candidatos a hard negative real. Categoria B ficou restrita ao treino e categoria C não entra em treino/validação/teste. Publicação: 325 arquivos encontrados, zero hashes divergentes.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_8idio7ba1uu",
+      "phase": 2,
+      "order": 2,
+      "title": "Construir o gerador de trilhas sintéticas - desenho da trilha",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 10,
+      "start": "2026-08-15",
+      "end": "2026-08-21",
+      "context": "Não existe dataset público pronto pra esse problema — gerar as trilhas sinteticamente é a parte mais original do TCC e vira uma contribuição metodológica própria.",
+      "whatToDo": "Implementar a função que desenha uma trilha de satélite realista sobre uma imagem de fundo.",
+      "howTo": "Usar OpenCV/NumPy pra desenhar uma linha com perfil de brilho gaussiano (simulando o PSF do telescópio). Parametrizar ângulo, comprimento, espessura, brilho e opacidade. Gerar 20-30 exemplos e conferir visualmente se parecem realistas.",
+      "done": [
+        {
+          "id": "dc_2olcr87a1uu",
+          "text": "Função de desenho da trilha implementada",
+          "done": true
+        },
+        {
+          "id": "dc_g0g9ys6a1uu",
+          "text": "Parâmetros ajustáveis (ângulo, brilho, espessura)",
+          "done": true
+        },
+        {
+          "id": "dc_fybhlf5a1uu",
+          "text": "20-30 exemplos validados visualmente",
+          "done": true
+        }
+      ],
+      "notes": "Gerador v3 determinístico validado para trilhas de brilho constante, variável e tracejado. A geometria OBB usa quatro vértices normalizados e foi testada matematicamente; os segmentos são gerados dentro da imagem para evitar distorções por clampagem. Parâmetros e seed de cada amostra ficam registrados no manifest.\n\nA validação formal posterior incluiu seis grades visuais raw/overlay, cobrindo 150 amostras únicas e todos os splits/subtipos, sem OBB desalinhada nas amostras positivas e sem OBB em negativos. O modo tracejado é tratado como stress test sintético; não afirmar prevalência real sem evidência externa.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_8yp2xaaa1uu",
+      "phase": 2,
+      "order": 3,
+      "title": "Construir o gerador de trilhas sintéticas - ruído e anotação",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 10,
+      "start": "2026-08-22",
+      "end": "2026-08-28",
+      "context": "Sem ruído realista e sem anotação automática, o dataset não serve pra treinar um detector supervisionado.",
+      "whatToDo": "Adicionar ruído realista às imagens sintéticas e gerar as anotações no formato exigido pelo modelo.",
+      "howTo": "Adicionar ruído gaussiano e poisson sobre as trilhas. Gerar bounding boxes orientados (formato YOLO-OBB) automaticamente a partir dos parâmetros da trilha desenhada. Rodar a geração em lote até atingir 2.000-4.000 imagens anotadas.",
+      "done": [
+        {
+          "id": "dc_bia4kf5a1uu",
+          "text": "Ruído realista implementado",
+          "done": true
+        },
+        {
+          "id": "dc_a4x5ue2a1uu",
+          "text": "Anotação automática em YOLO-OBB",
+          "done": true
+        },
+        {
+          "id": "dc_ykv4az8a1uu",
+          "text": "Lote de 2000-4000 imagens gerado",
+          "done": true
+        }
+      ],
+      "notes": "RUN imutável v3: synthetic_v3_c41d5091de56. Foram geradas 6.000 amostras: 3.000 positivas e 3.000 negativas. Positivas: 1.800 constantes, 751 variáveis e 449 tracejadas. Negativas: 2.400 limpas e 600 hard negatives sintéticos; labels negativos são arquivos vazios válidos.\n\nTodas as 6.000 imagens/labels passaram por verificação de arquivo, SHA-256 e geometria. As coordenadas OBB observadas ficaram em [0.00451195, 0.99340310], sem coordenadas fora da faixa e sem erros de label. Manifest SHA-256: b635aff10e8b24d3729b4b399f50a8223e0d4373d155a7f16bf232c58d844b42.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_ljvrnj0a1uu",
+      "phase": 2,
+      "order": 4,
+      "title": "Organizar e validar o dataset final",
+      "status": "done",
+      "priority": "media",
+      "estimate": 5,
+      "start": "2026-08-29",
+      "end": "2026-09-04",
+      "context": "Um split malfeito ou dados vazando entre treino e teste invalida qualquer resultado depois — vale a pena garantir isso logo no início.",
+      "whatToDo": "Separar o dataset em treino/validação/teste e reservar uma amostra real para checar generalização.",
+      "howTo": "Auditar o domínio, separar os fundos por SHA-256 antes da geração e só então gerar amostras dentro de cada split. Manter B somente em treino, A em treino/validação/teste e C fora do experimento. Validar contagens, hashes, labels, leakage e amostras visuais antes do treino.",
+      "done": [
+        {
+          "id": "dc_e89jsska1uu",
+          "text": "Split 70/20/10 feito",
+          "done": true
+        },
+        {
+          "id": "dc_fcikm7ma1uu",
+          "text": "Amostra real separada para teste",
+          "done": true
+        },
+        {
+          "id": "dc_40lcblla1uu",
+          "text": "Metodologia de geração documentada",
+          "done": true
+        },
+        {
+          "id": "dc_qiwsxyha1uu",
+          "text": "Dataset versionado no repo",
+          "done": true
+        }
+      ],
+      "notes": "Split v3 feito por fundo/hash antes da geração sintética. Pools únicos: treino 245 fundos, validação 40 e teste 40; nenhum fundo ou hash aparece em mais de um split. Categoria A: 170/40/40; categoria B: 75 fundos somente no treino. Manifest do split SHA-256: 9a2c2cd60ff69cd93d65824ae035ecbe4135f9cdf605b9bb527b6122f4daa67d.\n\nDataset final: treino 4.200, validação 900 e teste 900, sempre 50% positivo/50% negativo. Notebook 05 aprovou arquivos, hashes, OBBs, negativos vazios, ausência de leakage, revisão visual e smoke Ultralytics balanced_train_val_v2. O pacote determinístico de 12.004 membros foi auditado (12.000 hashes de conteúdo), publicado e verificado no Drive; SHA-256: 163f46b536aa416c39c806490d6e6066b393bdb53a1e6de5911f24699a4b5434.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_3qb36hoce7d",
+      "phase": 2,
+      "order": 5,
+      "title": "Modelar trilhas tracejadas de satélites em rotação (diferencial do TCC)",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 0,
+      "start": "2026-08-08",
+      "end": "2026-08-10",
+      "context": "Os artigos de referência (StreakMind, ASTA, HT-LCNN aplicado ao VST/OmegaCAM) não modelam esse efeito — o próprio artigo do VST/OmegaCAM cita isso como limitação explícita. Simular satélites em rotação/cambaleio, que produzem trilhas tracejadas ou com brilho variável ao longo do comprimento, é a principal contribuição original deste TCC frente à literatura.\n",
+      "whatToDo": "Estender o gerador sintético para produzir variação contínua de brilho e descontinuidades tracejadas, mantendo anotação única e rastreabilidade por subtipo.",
+      "howTo": "Implementar modulação de intensidade, gaps parametrizados, OBB contínua de objeto único e metadados de subtipo no manifest. Validar geometria, proporções e amostras visuais. A comparação de desempenho pertence à task de avaliação final.",
+      "done": [
+        {
+          "id": "dc_45dick4dkk1",
+          "text": "Modelo de variação de brilho implementado",
+          "done": true
+        },
+        {
+          "id": "dc_id1oneydpku",
+          "text": "Opção de trilha tracejada implementada",
+          "done": true
+        },
+        {
+          "id": "dc_t1zm69cdu1t",
+          "text": "Subconjunto tracejado rastreável no manifest e preservado no teste congelado",
+          "done": true
+        },
+        {
+          "id": "dc_1z7mjmxdyvd",
+          "text": "Decisão de objeto único e protocolo de anotação documentados",
+          "done": true
+        }
+      ],
+      "notes": "Modelagem concluída no RUN synthetic_v3_c41d5091de56. Positivas: 1.800 constantes, 751 variáveis e 449 tracejadas; o teste congelado contém 67 positivas tracejadas rastreáveis pelo manifest. A revisão visual e a validação formal aprovaram geometria e labels.\n\nA comparação constante × variável × tracejado foi removida desta task de construção e passou para a avaliação final. O resultado Hough já registrado é evidência parcial; o resultado YOLO só será preenchido depois do teste único do modelo vencedor.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_t1zts7ia1uu",
+      "phase": 3,
+      "order": 0,
+      "title": "Implementar o baseline clássico (Hough Transform)",
+      "status": "done",
+      "priority": "media",
+      "estimate": 6,
+      "start": "2026-09-05",
+      "end": "2026-09-11",
+      "context": "Todo modelo de deep learning precisa de um piso de comparação — sem baseline, não dá pra provar que a rede neural realmente ajudou.",
+      "whatToDo": "Implementar a detecção de trilhas usando Hough Transform, sem machine learning, e medir seu desempenho.",
+      "howTo": "Usar a implementação de Hough Transform do OpenCV sobre as imagens do conjunto de teste. Calcular precision e recall. Guardar esses números como referência para comparar com o modelo de deep learning depois.",
+      "done": [
+        {
+          "id": "dc_y5577jda1uu",
+          "text": "Hough Transform implementado",
+          "done": true
+        },
+        {
+          "id": "dc_8lw14hwa1uu",
+          "text": "Precision e recall calculados",
+          "done": true
+        },
+        {
+          "id": "dc_4cmzxs4a1uu",
+          "text": "Números registrados como baseline",
+          "done": true
+        }
+      ],
+      "notes": "Baseline Hough v3 calibrado exclusivamente em validação e testado uma única vez sob trava persistente. Configuração SHA-256: 14ef0ea56a2e86bf1581225c4b9a0733d482834e5f7d3fab18b3eaf76f03a2e5. Resultado SHA-256: 5b476de5a6015b6c38758a43e8c46719050bc036d28362d5f7d43f13e8ffa3b8.\n\nTeste sintético (900 imagens), matching combinado/geometria: TP=148, FP=187, FN=302, precisão=0,441791, recall=0,328889 e F1=0,377070. IoU isolado: F1=0,221656. Recall por subtipo: constante=0,418519, variável=0,300885, tracejado=0,014925. IC95% do F1 por bootstrap agrupado por fundo: [0,26664845; 0,51242627]. Não reutilizar as métricas antigas 0,149/0,300/0,199 nem concluir incapacidade absoluta no tracejado.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_mi3bq4ma1uu",
+      "phase": 3,
+      "order": 1,
+      "title": "Preparar o ambiente de treino YOLO-OBB",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 5,
+      "start": "2026-09-12",
+      "end": "2026-09-18",
+      "context": "Validar dados, pacote, GPU e backpropagação com positivos e negativos antes dos treinos controlados evita gastar GPU com um pipeline inválido.",
+      "whatToDo": "Fixar o ambiente Ultralytics, validar o dataset YOLO-OBB, executar smoke test representativo e preparar a restauração íntegra do dataset em runtime GPU.",
+      "howTo": "Usar Ultralytics 8.4.127, smoke balanceado com positivos/negativos e todos os subtipos, empacotar o RUN aprovado em TAR com SHA-256, restaurá-lo na GPU e congelar o contrato de seleção antes do treino.",
+      "done": [
+        {
+          "id": "dc_do768hoa1uu",
+          "text": "Ultralytics instalado e versão fixada",
+          "done": true
+        },
+        {
+          "id": "dc_sw886mqa1uu",
+          "text": "Dataset YOLO-OBB validado, empacotado e restaurado na GPU",
+          "done": true
+        },
+        {
+          "id": "dc_z1cvcn6a1uu",
+          "text": "Smoke test balanceado com positivos e negativos executado sem erros",
+          "done": true
+        }
+      ],
+      "notes": "Task concluída pelos gates dos Notebooks 05, 07 e 08. Smoke balanced_train_val_v2: 10 imagens de treino e 10 de validação, cada subconjunto com 6 positivas, 4 negativas e todos os subtipos; perdas box/classificação/DFL/ângulo não nulas. Dataset GPU aprovado: 6.000 amostras, manifest SHA-256 b635aff10e8b24d3729b4b399f50a8223e0d4373d155a7f16bf232c58d844b42.\n\nRuntime aprovado: Tesla T4 com 14,56 GiB. Pacote SHA-256: 163f46b536aa416c39c806490d6e6066b393bdb53a1e6de5911f24699a4b5434. Contrato de seleção congelado antes do treino: SHA-256 25af65bbb44f0b2d84c7064ecebe698dc81e74df842b85e1bcb2426d439ff0b1.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_v3_selecao_familia",
+      "phase": 3,
+      "order": 2,
+      "title": "Selecionar a família YOLO-OBB somente em validação",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 8,
+      "start": "2026-08-27",
+      "end": "2026-08-28",
+      "context": "YOLOv8n-OBB e YOLO11n-OBB precisam ser comparados sob condições idênticas antes do treino final, sem consultar o teste sintético nem o ASTA.",
+      "whatToDo": "Treinar as duas famílias com uma seed comum, calibrar cada uma somente em validação e publicar o vencedor segundo a regra pré-registrada.",
+      "howTo": "Executar o Notebook 08 com seed 20260823, Ultralytics 8.4.127, até 100 épocas, patience 20, imgsz 512, batch 16 e AdamW. Comparar F1 combinado, falsos positivos em negativos e mAP na validação; usar YOLO11n somente como desempate final previsto no contrato.",
+      "done": [
+        {
+          "id": "dc_v3_sel_gates",
+          "text": "GPU, dataset e contrato congelado aprovados",
+          "done": true
+        },
+        {
+          "id": "dc_v3_sel_v8",
+          "text": "Treino YOLOv8n-OBB concluído e registrado",
+          "done": true
+        },
+        {
+          "id": "dc_v3_sel_y11",
+          "text": "Treino YOLO11n-OBB concluído e registrado",
+          "done": true
+        },
+        {
+          "id": "dc_v3_sel_winner",
+          "text": "Comparação de validação e vencedor publicados",
+          "done": true
+        }
+      ],
+      "notes": "EM ANDAMENTO em 28/08/2026 em Tesla T4. Dataset GPU aprovado: 6.000 amostras; manifest SHA-256 b635aff10e8b24d3729b4b399f50a8223e0d4373d155a7f16bf232c58d844b42. Contrato de seleção SHA-256 25af65bbb44f0b2d84c7064ecebe698dc81e74df842b85e1bcb2426d439ff0b1. YOLOv8n-OBB concluído com 100 épocas; best.pt SHA-256 f6fc2ce471437ede9663d45bc9ba21d4c65dcde8e59244d3491783fb4796a09a. YOLO11n-OBB concluído com 41 épocas; best.pt SHA-256 dab6ececdc1011a645bfa4a3486ba3bd10746d083fa3ccc61ac462fc21b1aa7e. A primeira tentativa de avaliação em validação falhou antes da primeira imagem por OOM causado pela lista de 900 caminhos ser tratada como lote; o Notebook 08 foi corrigido para diretório, streaming, batch=1, conferência dos 900 IDs e limpeza de VRAM. Uma primeira regeneração colocou o import de gc na célula errada e gerou NameError; a posição do import passou a ter teste de regressão explícito e a versão corrigida foi aprovada localmente. A avaliação comparativa em validação foi concluída sem ler teste/ASTA: YOLOv8n F1 0,977049, FP-frame 0,000000, mAP50-95 0,559282 e 7,212659 ms; YOLO11n F1 0,963124, FP-frame 0,002222, mAP50-95 0,550573 e 9,473010 ms. As diferenças nas três métricas de decisão ficaram abaixo dos limiares materiais, portanto a recomendação determinística é YOLO11n pelo desempate pré-registrado; a revisão humana aprovou essa interpretação, mas o contrato vencedor foi publicado e verificado. teste sintético e ASTA permanecem bloqueados. Contrato oficial: YOLO11n-OBB, threshold 0,45, seeds finais [20260823, 20260824, 20260825], SHA-256 do contrato bc89537e86230ce1757ae990054859b59c59bbfcdfae8ef3daf0a4f13f5cd391. A seleção não consultou teste sintético nem ASTA.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_xgyuhaja1uu",
+      "phase": 3,
+      "order": 3,
+      "title": "Treinar o modelo vencedor em três seeds",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 14,
+      "start": "2026-09-19",
+      "end": "2026-09-25",
+      "context": "Depois de escolher a família em validação, três seeds quantificam a variabilidade de treino e evitam sustentar a conclusão em uma única inicialização aleatória.",
+      "whatToDo": "Treinar somente a família vencedora nas seeds 20260823, 20260824 e 20260825 sob o protocolo congelado, preservando checkpoints, curvas e hashes.",
+      "howTo": "Reutilizar exatamente a configuração publicada na seleção, sem ajustar parâmetros após observar teste ou ASTA. Registrar best.pt/last.pt, seed, épocas, hashes e métricas de validação de cada execução.",
+      "done": [
+        {
+          "id": "dc_5h0crp3a1uu",
+          "text": "Família vencedora e protocolo final congelados",
+          "done": true
+        },
+        {
+          "id": "dc_998wtnxa1uu",
+          "text": "Três seeds do modelo vencedor concluídas",
+          "done": true
+        },
+        {
+          "id": "dc_5cr0m53a1uu",
+          "text": "Variabilidade entre seeds consolidada",
+          "done": true
+        }
+      ],
+      "notes": "CONCLUÍDA em 29/08/2026. Protocolo final SHA-256 457b70c8e96176827bf4a3f755963e6c6c3e607bec7d8133233518b26be27870. O gate TREINOS_MULTISEED_APROVADOS confirmou seeds 20260823/20260824/20260825, respectivamente com 41/49/48 épocas e best.pt SHA-256 dab6ececdc1011a645bfa4a3486ba3bd10746d083fa3ccc61ac462fc21b1aa7e, a2b64773f32868ac952d81c33b331f1759b2250a3a04f49d5ab105f7bb79dd0c e 68433cd33a9fb77523ac0adf5fed918edae7f1bba4b17abf8618b119f89f349d. Em validação a threshold 0,45, os F1 foram 0,963124/0,986726/0,957377 (média 0,969076; DP amostral 0,015553; faixa 0,029349). A seed 20260824 foi recomendada como checkpoint operacional por maior F1 combinado; também obteve taxa zero de frames negativos com FP. A seed 20260825 teve o maior mAP50-95 OBB (0,636749), mas esse era apenas o terceiro critério. Tabela de validação SHA-256 1ebf261bd0e66cf610a85b96927357ea966a2e44211a85f546cde98666955f42. Teste sintético e ASTA permaneceram não lidos; o contrato dos modelos finais ainda precisa ser publicado antes do teste.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_fqrfqyxa1uu",
+      "phase": 3,
+      "order": 4,
+      "title": "Executar o teste sintético final e comparar com o Hough",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 6,
+      "start": "2026-09-26",
+      "end": "2026-10-02",
+      "context": "O teste sintético deve ser tocado uma única vez, depois de família, pesos, thresholds e regra de matching estarem congelados em treino/validação.",
+      "whatToDo": "Executar o modelo vencedor no teste sintético congelado e compará-lo formalmente ao Hough v3, incluindo negativos, subtipos de brilho e incerteza agrupada por fundo.",
+      "howTo": "Publicar primeiro o contrato final; executar o teste uma única vez; calcular precisão, recall, F1, mAP, FP/imagem negativa, taxa de frames com FP, métricas por subtipo e intervalos de confiança agrupados por fundo. ASTA permanece em uma task externa separada.",
+      "done": [
+        {
+          "id": "dc_t1yn353a1uu",
+          "text": "Contrato final congelado antes de abrir o teste",
+          "done": true
+        },
+        {
+          "id": "dc_ur01e1na1uu",
+          "text": "Teste sintético executado uma única vez",
+          "done": true
+        },
+        {
+          "id": "dc_xaltcpta1uu",
+          "text": "Comparação YOLO × Hough registrada",
+          "done": true
+        },
+        {
+          "id": "dc_uovm7mkuphg",
+          "text": "Métricas por subtipo, negativos e IC por fundo calculados",
+          "done": true
+        }
+      ],
+      "notes": "CONCLUÍDA em 29/08/2026 (evento UTC concluído em 30/08/2026). O evento único 29fcf556-5eb4-43fc-8d30-8e3d88edf6c9 avaliou as seeds 20260823/20260824/20260825 e foi persistido/travado com resultado SHA-256 878f63dbedea0f72a4b7ed77c238d49cb2b17a89cfce4f51a27ea3b4d7fa0485. F1 por seed: 0,957284/0,973392/0,965142; média 0,965273, DP amostral 0,008055, mínimo 0,957284 e máximo 0,973392. Resultado primário YOLO: precisão 0,953888, recall 0,977037, F1 0,965273, mAP50-95 OBB 0,557195, zero FP por imagem negativa e zero frames negativos com FP. Hough congelado: precisão 0,441791, recall 0,328889, F1 0,377070, 0,204444 FP/imagem negativa e 0,044444 de frames negativos com FP. Bootstrap pareado por 40 fundos, 2.000 réplicas: IC95% F1 YOLO [0,957374; 0,973228], Hough [0,266648; 0,512426] e delta YOLO-Hough [0,454965; 0,694715]. Tabela seeds SHA-256 5c28a8b756330430dbb4039ab9d28a5c88978dbb4dfaa09f0e01201e7d6a6d09; comparação SHA-256 dde599c3ee3fd4369ce76d78031d6ecb6f0d9a04441e35f13d1d05d71025288d; bootstrap SHA-256 754580d752c6dccf8ee21fbc40a7a84df2a5f29aa7f467234cc67b5cbea089f7. Métricas por subtipo, negativos e geometria foram calculadas e incluídas no backup de oito artefatos. Não houve seleção de seed nem recalibração pelo teste; ASTA permaneceu intocado. A superioridade observada é válida para o teste sintético e não substitui a avaliação externa real no ASTA.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_s8rsnmta1uu",
+      "phase": 4,
+      "order": 0,
+      "title": "Analisar erros de validação e descrever erros de teste",
+      "status": "done",
+      "priority": "media",
+      "estimate": 5,
+      "start": "2026-10-03",
+      "end": "2026-10-09",
+      "context": "Erros de validação podem orientar uma correção antes do congelamento; erros do teste final só podem ser descritos, nunca usados para reajustar modelo, dataset ou threshold.",
+      "whatToDo": "Categorizar falsos positivos e falsos negativos em validação antes do teste e, depois do teste único, produzir uma análise descritiva separada das limitações observadas.",
+      "howTo": "Gerar visualizações e categorias por subtipo, fundo, SNR/contraste e artefato confundidor. Registrar explicitamente se cada análise é de validação ou teste e proibir retreino baseado no teste.",
+      "done": [
+        {
+          "id": "dc_fsynogfa1uu",
+          "text": "Erros de validação analisados antes do congelamento final",
+          "done": true
+        },
+        {
+          "id": "dc_popx83ha1uu",
+          "text": "Erros dos testes descritos sem retuning",
+          "done": true
+        },
+        {
+          "id": "dc_v4_qual_review",
+          "text": "37 casos ASTA/19 folhas revisados com métodos visualmente isolados",
+          "done": true
+        },
+        {
+          "id": "dc_v4_hough_failure",
+          "text": "Saturação de falsos positivos do Hough v4.1 caracterizada",
+          "done": true
+        }
+      ],
+      "notes": "CONCLUÍDA. O Notebook 14 fechou com o gate ANALISE_POS_TESTE_V4_PUBLICADA em 03/09/2026, SHA-256 ea83fe1644dcc017a346aab61db8b71e650379e46ac841b9963a2ad98bd0596d. Foram revisados 37 casos em 19 folhas: sucesso, múltiplas trilhas, detecção parcial, falha completa e o único negativo oficial. Painéis: imagem limpa | referência verde | YOLO ciano | Hough vermelho, sem sobreposição entre métodos. Nenhuma inferência ou alteração de threshold foi realizada na análise.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_cbcjztsa1uu",
+      "phase": 4,
+      "order": 1,
+      "title": "Iterar no dataset somente se a validação exigir",
+      "status": "done",
+      "priority": "media",
+      "estimate": 8,
+      "start": "2026-10-10",
+      "end": "2026-10-16",
+      "context": "Esta é uma task condicional, não um passo obrigatório. Só deve ocorrer diante de falha crítica documentada na validação; o teste nunca pode motivar nova geração ou retreino.",
+      "whatToDo": "Se a validação revelar um defeito metodológico material, criar um novo RUN versionado, repetir os gates e reiniciar a seleção. Caso contrário, registrar a task como não necessária.",
+      "howTo": "Documentar a evidência de validação e a decisão antes da mudança. Nunca sobrescrever o RUN v3. Gerar nova versão, refazer leakage/labels/revisão visual e repetir seleção e treino antes de qualquer teste.",
+      "done": [
+        {
+          "id": "dc_km8d49wa1uu",
+          "text": "Necessidade de iteração decidida usando somente validação: não necessária",
+          "done": true
+        },
+        {
+          "id": "dc_hruix39a1uu",
+          "text": "Nova versão do dataset não aplicável: nenhum defeito crítico de validação exigiu iteração",
+          "done": true
+        },
+        {
+          "id": "dc_0u3bv1da1uu",
+          "text": "Repetição de seleção/treino não aplicável: RUN v3 preservado",
+          "done": true
+        }
+      ],
+      "notes": "ENCERRADA COMO NÃO NECESSÁRIA. A validação aprovou o RUN synthetic_v3_c41d5091de56; resultados de teste e ASTA não autorizam regeneração ou retreino. A correção Hough externa foi uma reparação de equivalência Hough-only, versionada, sem mudança no dataset, YOLO ou threshold.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_d1r69ada1uu",
+      "phase": 4,
+      "order": 2,
+      "title": "Auditar o protocolo ASTA e testar generalização real",
+      "status": "done",
+      "priority": "alta",
+      "estimate": 6,
+      "start": "2026-10-17",
+      "end": "2026-10-23",
+      "context": "Esse é o ponto que a banca mais vai questionar: um modelo treinado só com dados sintéticos generaliza pra imagens reais?",
+      "whatToDo": "Confirmar inventário, dimensão, licença e pareamento do ASTA; congelar o pré-processamento de imagem grande; depois executar o modelo final sem usar o conjunto para ajuste.",
+      "howTo": "Usar tiles 512 com sobreposição e padding determinísticos, normalização congelada, ground truth extraído apenas das máscaras, remapeamento/merging global e o mesmo contrato para YOLO e Hough. Congelar matching, métricas e tempo antes de executar o ASTA uma vez.",
+      "done": [
+        {
+          "id": "dc_gr6blifa1uu",
+          "text": "ASTA isolado e não usado em seleção",
+          "done": true
+        },
+        {
+          "id": "dc_6pk62paa1uu",
+          "text": "Inventário, licença, tiles e centerline congelados",
+          "done": true
+        },
+        {
+          "id": "dc_dkhidqga1uu",
+          "text": "Inferência externa executada uma vez e limites documentados",
+          "done": true
+        },
+        {
+          "id": "dc_v4_hough_event",
+          "text": "Evento corretivo Hough-only v4.1 concluído sem YOLO ou retuning",
+          "done": true
+        },
+        {
+          "id": "dc_v4_asta_backup",
+          "text": "178 checkpoints por método e backups finais verificados",
+          "done": true
+        }
+      ],
+      "notes": "CONCLUÍDA. ASTA: 178 frames 10.560×10.560; 177 positivos e um negativo oficial. Protocolo SHA-256 dc4c58381b1e3e7d2a24f7fdac8fc59276e53b9d900853c1191a497319e862bc. YOLO operacional, evento 4edef981-5590-4330-8dba-bd4d14dbcdda: macro F1 0,583367; pooled P/R/F1 0,866967/0,536240/0,662629. Hough v3 foi suspenso por não equivalência; evento corretivo v4.1 7d717aea-eed8-4f4b-ba63-d4b0ca51d29c: macro F1 0,004632; pooled P/R/F1 0,002313/0,971457/0,004614; resultado SHA-256 303502ee091dfa26649df5bef4f61f0cf8d644925fd9487f96b2085772b444d8. IC95% pareado do delta macro F1 YOLO−Hough: [0,529404; 0,628687]. O único negativo impede estimativa estável de FP real.",
+      "links": [
+        {
+          "id": "lnk_wn0u2nstlqf",
+          "label": "Imagens reais de teste",
+          "url": "https://drive.google.com/drive/u/0/folders/1w5ljL9-OwYnsB9JPb6VsrDX0SBrW8QXl"
+        }
+      ],
+      "attachments": []
+    },
+    {
+      "id": "tk_36uqrz5a1uu",
+      "phase": 4,
+      "order": 3,
+      "title": "Consolidar os resultados finais",
+      "status": "done",
+      "priority": "media",
+      "estimate": 6,
+      "start": "2026-10-24",
+      "end": "2026-10-30",
+      "context": "Última chance de garantir que os números e visualizações estão prontos pra virar o capítulo de resultados do TCC.",
+      "whatToDo": "Fechar as métricas finais e produzir as visualizações que vão pro texto.",
+      "howTo": "Consolidar mAP, precision, recall e F1 numa tabela final. Gerar imagens comparando bounding box detectado vs ground truth. Escrever a seção de resultados com base nesses números.",
+      "done": [
+        {
+          "id": "dc_eywid9ga1uu",
+          "text": "Tabela de métricas sintéticas e ASTA finalizada",
+          "done": true
+        },
+        {
+          "id": "dc_ntgkzpfa1uu",
+          "text": "Figuras quantitativas e qualitativas finais geradas",
+          "done": true
+        },
+        {
+          "id": "dc_d3hw1qpa1uu",
+          "text": "Seção técnica de resultados consolidada",
+          "done": true
+        },
+        {
+          "id": "dc_75nic0tv0hi",
+          "text": "Resultado por subtipo disponível e limitações registradas",
+          "done": true
+        },
+        {
+          "id": "dc_v4_final_analysis",
+          "text": "Análise pós-teste publicada sem alterar resultados",
+          "done": true
+        }
+      ],
+      "notes": "CONCLUÍDA NO NÍVEL EXPERIMENTAL. Teste sintético protegido: YOLO11n-OBB média de três seeds P/R/F1 0,953888/0,977037/0,965273, DP F1 0,008055 e zero FP nas 450 negativas; Hough F1 0,377070; delta IC95% [0,454965; 0,694715]. ASTA externo: YOLO macro F1 0,583367; Hough v4.1 macro F1 0,004632; delta IC95% [0,529404; 0,628687]. Compilado técnico v4 e análise qualitativa foram reconciliados. A conversão ao texto institucional permanece na task de escrita.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_v3_checkpoint_orientador",
+      "phase": 4,
+      "order": 4,
+      "title": "Validar resultados e narrativa com o orientador",
+      "status": "todo",
+      "priority": "alta",
+      "estimate": 2,
+      "start": "2026-10-24",
+      "end": "2026-10-30",
+      "context": "O plano inicial foi aprovado, mas os resultados e suas limitações também precisam de um checkpoint formal antes da consolidação acadêmica e da defesa.",
+      "whatToDo": "Apresentar protocolo congelado, resultados YOLO × Hough, análise por subtipo e evidência ASTA ao orientador; registrar feedback e ajustes de narrativa.",
+      "howTo": "Preparar um resumo de uma página com dados, hashes, métricas, intervalos de confiança e limitações. Ajustar texto e escopo conforme o feedback, sem retreinar ou recalibrar usando resultados de teste.",
+      "done": [
+        {
+          "id": "dc_v3_ori_apresentar",
+          "text": "Resultados e limitações apresentados",
+          "done": false
+        },
+        {
+          "id": "dc_v3_ori_feedback",
+          "text": "Feedback do orientador registrado",
+          "done": false
+        },
+        {
+          "id": "dc_v3_ori_narrativa",
+          "text": "Narrativa ajustada sem retuning pós-teste",
+          "done": false
+        }
+      ],
+      "notes": "MATERIAL PRONTO PARA APRESENTAÇÃO. Levar: teste sintético YOLO 0,9653 × Hough 0,3771; ASTA YOLO macro 0,5834 × Hough v4.1 0,0046; intervalos de confiança; exemplos qualitativos; limitações de domain shift, único negativo ASTA e custo de tiles. Ajustes devem ser narrativos/editoriais, sem reabrir o teste ou recalibrar parâmetros.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_sx4cl4ia1uu",
+      "phase": 5,
+      "order": 0,
+      "title": "Limpar e organizar o código",
+      "status": "todo",
+      "priority": "media",
+      "estimate": 8,
+      "start": "2026-10-31",
+      "end": "2026-11-06",
+      "context": "Código que só funciona na cabeça de quem escreveu não serve como entrega — a banca (e você, daqui a 6 meses) precisa conseguir rodar.",
+      "whatToDo": "Transformar os scripts soltos em módulos organizados e garantir que o pipeline roda do início ao fim sem intervenção manual.",
+      "howTo": "Refatorar em módulos (data_generation, models, utils). Remover código morto e comentar as funções principais. Rodar o pipeline completo numa máquina/ambiente limpo pra confirmar reprodutibilidade.",
+      "done": [
+        {
+          "id": "dc_oq5rkrsa1uu",
+          "text": "Código refatorado em módulos",
+          "done": false
+        },
+        {
+          "id": "dc_r4i4nu7a1uu",
+          "text": "Comentários nas funções principais",
+          "done": false
+        },
+        {
+          "id": "dc_jjgtf1va1uu",
+          "text": "Pipeline testado do zero",
+          "done": false
+        }
+      ],
+      "notes": "PENDENTE. Os notebooks ativos são gerados por work/build_notebooks_v3.py e passam em validações locais, mas ainda falta organizar a entrega pública, remover resíduos históricos sem perder rastreabilidade e testar o fluxo completo em ambiente limpo seguindo apenas a documentação.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_bc8muvea1uu",
+      "phase": 5,
+      "order": 1,
+      "title": "Escrever o README completo",
+      "status": "doing",
+      "priority": "alta",
+      "estimate": 5,
+      "start": "2026-11-07",
+      "end": "2026-11-13",
+      "context": "O README é o primeiro (e às vezes único) contato de quem avalia o projeto com o código — precisa contar a história toda sozinho.",
+      "whatToDo": "Documentar o projeto de forma que qualquer pessoa consiga entender o problema, rodar o código e ver os resultados.",
+      "howTo": "Seguir a estrutura: descrição, motivação, dataset, metodologia, resultados, como reproduzir, limitações. Incluir imagens de exemplo (antes/depois da detecção). Testar o requirements.txt do zero.",
+      "done": [
+        {
+          "id": "dc_kewrtkja1uu",
+          "text": "README com todas as seções",
+          "done": true
+        },
+        {
+          "id": "dc_m0znmgwa1uu",
+          "text": "Imagens de exemplo incluídas",
+          "done": true
+        },
+        {
+          "id": "dc_3zqephna1uu",
+          "text": "requirements.txt testado",
+          "done": false
+        },
+        {
+          "id": "dc_v3_readme_proveniencia",
+          "text": "Proveniência, licenças, hashes e protocolo de reprodução documentados",
+          "done": true
+        }
+      ],
+      "notes": "EM ANDAMENTO. outputs/README.md foi reescrito em 03/09/2026 com objetivo, contribuições, dados, metodologia, resultados sintéticos e ASTA, reprodução, limitações, trabalhos relacionados, integridade e licenças. O texto reflete YOLO11n-OBB e Hough v4.1, sem placeholders antigos. Quatro imagens aprovadas foram versionadas em outputs/assets/readme e o inventário completo das 16 figuras do compilado foi publicado em outputs/IMAGENS_COMPILADO.md. Pendente para encerrar a entrega pública: definir/testar o arquivo de dependências em ambiente limpo e revisar os links após posicionar o README na raiz final do GitHub.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_27qut4pa1uu",
+      "phase": 5,
+      "order": 2,
+      "title": "Escrever metodologia e resultados do TCC",
+      "status": "doing",
+      "priority": "alta",
+      "estimate": 10,
+      "start": "2026-11-14",
+      "end": "2026-11-20",
+      "context": "Essas seções já têm quase todo o conteúdo pronto dos meses anteriores — é hora de transformar anotações em texto acadêmico.",
+      "whatToDo": "Redigir as seções de metodologia e resultados do documento do TCC.",
+      "howTo": "Puxar as anotações técnicas já registradas (geração do dataset, arquitetura, métricas). Estruturar em prosa acadêmica com as figuras e tabelas já geradas.",
+      "done": [
+        {
+          "id": "dc_wln8dlka1uu",
+          "text": "Metodologia técnica detalhada no compilado consolidado",
+          "done": true
+        },
+        {
+          "id": "dc_2g5acjya1uu",
+          "text": "Resultados técnicos com tabelas e figuras consolidados",
+          "done": true
+        },
+        {
+          "id": "dc_v4_institutional_transfer",
+          "text": "Conteúdo transferido e normalizado no template institucional",
+          "done": false
+        }
+      ],
+      "notes": "EM ANDAMENTO. O compilado v4 contém metodologia, resultados sintéticos e ASTA, discussão, limitações, conclusão experimental, figuras próprias e rastreabilidade. Falta transformar o compilado em monografia no template oficial e incorporar o feedback do orientador.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_zqtn258a1uu",
+      "phase": 5,
+      "order": 3,
+      "title": "Revisão técnica geral do projeto",
+      "status": "todo",
+      "priority": "media",
+      "estimate": 4,
+      "start": "2026-11-21",
+      "end": "2026-11-27",
+      "context": "Última verificação antes de entrar na reta final de escrita, pra não descobrir um problema técnico na véspera da entrega.",
+      "whatToDo": "Testar o repositório do zero e corrigir qualquer coisa que quebrar.",
+      "howTo": "Clonar o repo num ambiente novo (ou Colab novo), seguir o próprio README à risca, e anotar/corrigir qualquer passo que falhar.",
+      "done": [
+        {
+          "id": "dc_eixkx22a1uu",
+          "text": "Repo testado em ambiente limpo",
+          "done": false
+        },
+        {
+          "id": "dc_1h8u7f1a1uu",
+          "text": "Problemas encontrados corrigidos",
+          "done": false
+        }
+      ],
+      "notes": "PENDENTE. A validação por notebook está concluída; falta uma reprodução de entrega em ambiente limpo e conferência do repositório como produto final.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_s7mi4a4a1uu",
+      "phase": 6,
+      "order": 0,
+      "title": "Fechar introdução e revisão bibliográfica",
+      "status": "doing",
+      "priority": "media",
+      "estimate": 6,
+      "start": "2026-11-28",
+      "end": "2026-12-04",
+      "context": "Essas seções costumam ser reescritas por último, quando já se sabe exatamente o que o trabalho entregou.",
+      "whatToDo": "Finalizar a introdução, justificativa, objetivos e a revisão bibliográfica com as citações formatadas.",
+      "howTo": "Revisar a introdução à luz dos resultados finais obtidos. Conferir se todas as citações da revisão bibliográfica seguem a norma da instituição.",
+      "done": [
+        {
+          "id": "dc_mefw40oa1uu",
+          "text": "Introdução técnica atualizada à luz dos resultados",
+          "done": true
+        },
+        {
+          "id": "dc_2okwq75a1uu",
+          "text": "Revisão bibliográfica com citações formatadas no padrão final",
+          "done": false
+        }
+      ],
+      "notes": "Introdução e objetivo já foram reconciliados no compilado técnico. Pendente: acabamento no template da monografia, normalização bibliográfica e conferência citação↔referência.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_r3zpyqda1uu",
+      "phase": 6,
+      "order": 1,
+      "title": "Escrever conclusão e trabalhos futuros",
+      "status": "doing",
+      "priority": "media",
+      "estimate": 4,
+      "start": "2026-12-05",
+      "end": "2026-12-11",
+      "context": "É onde o TCC demonstra reflexão crítica sobre o que foi feito, não só descrição do que foi feito.",
+      "whatToDo": "Redigir a conclusão do trabalho, as limitações encontradas e sugestões de continuidade.",
+      "howTo": "Resumir os principais achados. Listar as limitações já documentadas na fase de validação. Propor 2-3 direções de trabalho futuro.",
+      "done": [
+        {
+          "id": "dc_g2tbmdma1uu",
+          "text": "Conclusão experimental redigida no compilado",
+          "done": true
+        },
+        {
+          "id": "dc_380jtksa1uu",
+          "text": "Limitações experimentais listadas",
+          "done": true
+        },
+        {
+          "id": "dc_dimf98fa1uu",
+          "text": "Trabalhos futuros e extensão para artigo sugeridos",
+          "done": true
+        },
+        {
+          "id": "dc_v4_conclusion_advisor",
+          "text": "Conclusão revisada e aprovada pelo orientador",
+          "done": false
+        }
+      ],
+      "notes": "RASCUNHO TÉCNICO CONCLUÍDO. A conclusão experimental registra generalização parcial, vantagem do YOLO, falha de domínio do Hough clássico e limitações. O status permanece doing até revisão do orientador e adaptação ao documento final.",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_uctvn59a1uu",
+      "phase": 6,
+      "order": 2,
+      "title": "Revisão geral do documento",
+      "status": "todo",
+      "priority": "alta",
+      "estimate": 6,
+      "start": "2026-12-12",
+      "end": "2026-12-18",
+      "context": "Erros de formatação e referência cruzada são o tipo de problema que mais incomoda uma banca, e são os mais fáceis de evitar com revisão cuidadosa.",
+      "whatToDo": "Revisar formatação, ortografia e consistência de referências do documento completo.",
+      "howTo": "Conferir a formatação conforme a norma da instituição. Rodar revisão ortográfica/gramatical. Checar se toda citação no texto aparece na bibliografia e vice-versa.",
+      "done": [
+        {
+          "id": "dc_k1zajxba1uu",
+          "text": "Formatação conferida",
+          "done": false
+        },
+        {
+          "id": "dc_qcgecvda1uu",
+          "text": "Revisão ortográfica feita",
+          "done": false
+        },
+        {
+          "id": "dc_4duzhdpa1uu",
+          "text": "Referências cruzadas conferidas",
+          "done": false
+        }
+      ],
+      "notes": "",
+      "links": [],
+      "attachments": []
+    },
+    {
+      "id": "tk_9cbfimaa1uu",
+      "phase": 6,
+      "order": 3,
+      "title": "Entrega final",
+      "status": "todo",
+      "priority": "alta",
+      "estimate": 4,
+      "start": "2026-12-19",
+      "end": "2026-12-25",
+      "context": "A margem de segurança aqui existe porque imprevistos de última hora são a regra, não a exceção.",
+      "whatToDo": "Fechar a entrega: TCC formatado, repositório público e, se aplicável, apresentação de defesa preparada.",
+      "howTo": "Revisar uma última vez o documento completo. Tornar o repositório público. Preparar slides de defesa, se for o caso. Entregar dentro do prazo com folga.",
+      "done": [
+        {
+          "id": "dc_xvbhqw3a1uu",
+          "text": "Documento revisado",
+          "done": false
+        },
+        {
+          "id": "dc_8qy4vaka1uu",
+          "text": "Repositório tornado público",
+          "done": false
+        },
+        {
+          "id": "dc_5hqaqn1a1uu",
+          "text": "Apresentação preparada (se aplicável)",
+          "done": false
+        }
+      ],
+      "notes": "",
+      "links": [],
+      "attachments": []
+    }
+  ]
+}
