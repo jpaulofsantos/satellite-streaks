@@ -221,7 +221,7 @@ Esses limites orientam trabalhos futuros com adaptação de domínio, negativos 
 
 O projeto registra versões de dados, configurações, modelos e resultados por SHA-256. Esses hashes funcionam como identificadores de conteúdo: qualquer alteração muda o valor e impede que artefatos incompatíveis sejam combinados silenciosamente. Gates registram contratos e evitam sobrescrita. A auditoria corretiva Hough pós-teste constitui uma intervenção versionada explícita, não uma garantia de ausência de qualquer alteração posterior à primeira observação externa.
 
-O relatório técnico consolidado está em [`compilado-progresso-tcc-v8-abertura-visual-2026-09-07.docx`](./compilado-progresso-tcc-v8-abertura-visual-2026-09-07.docx).
+O relatório técnico consolidado está em [`Detecção de Trilhas de Satélite em Imagens Astronômicas`](./DETECÇÃO_DE_TRILHAS_DE_SATÉLITE_EM_IMAGENS_ASTRONÔMICAS.pdf).
 
 ## Licença e citação
 
